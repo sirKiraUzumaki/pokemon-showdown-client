@@ -807,12 +807,13 @@ class BattleLog {
 				setAttrib('style', `${style};color:${color}`);
 			} else if (tagName === 'spotify') {
 				// <iframe src="https://open.spotify.com/embed/track/6aSYnCIwcLpnDXngGKAEzZ" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+				
 				const src = getAttrib('src') || '';
 				const songId = /(?:\?v=|\/track\/)([A-Za-z0-9]+)/.exec(src)?.[1];
 						
 				return {
 					tagName: 'iframe',
-					attribs: ['src', `https://open.spotify.com/embed/track/${songId}`,'width', '300', 'height', '380', 'frameborder', '0', 'allowtransparency', 'true', 'allow', 'encrypted-media'],
+					attribs: ['src', 'https://open.spotify.com/embed/track/'+songId, 'width', '300', 'height', '380', 'frameborder', '0', 'allowtransparency', 'true', 'allow', 'encrypted-media'],
 				};
 			} else if (tagName === 'youtube') {
 				// <iframe width="320" height="180" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -822,7 +823,7 @@ class BattleLog {
 
 				return {
 					tagName: 'iframe',
-					attribs: ['width', '320', 'height', '180', 'src', `https://www.youtube.com/embed/${videoId}`, 'frameborder', '0', 'allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture', 'allowfullscreen', 'allowfullscreen'],
+					attribs: ['width', '320', 'height', '180', 'src', 'https://www.youtube.com/embed/'+videoId, 'frameborder', '0', 'allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture', 'allowfullscreen', 'allowfullscreen'],
 				};
 			} else if (tagName === 'psicon') {
 				// <psicon> is a custom element which supports a set of mutually incompatible attributes:
